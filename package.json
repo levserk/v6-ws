@@ -1,0 +1,20 @@
+{
+    "name": "perfect-server",
+    "version": "0.0.1",
+    "description": "game server for V6",
+    "author": {
+        "name": "King of Animals Lion"
+    },
+    "main": "socket-server/index.js",
+    "dependencies": {
+        "ws": "*"
+    },
+    "devDependencies": {
+        "es6-promise": "*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/levserk/step/tree/master"
+    }
+
+}

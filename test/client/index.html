@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>StepByStep</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript">
+        window.test = function testForeach(size){
+            size = size || 1000;
+            var testObj = [];
+            for(var i=0; i<size; i++){
+                testObj[i]={v : i};
+            }
+            console.log('start test', size)
+            var t1 = new Date();
+            for (var i=size/2; i<size/2+1000; i++){
+                var index = testObj.indexOf({v : i});
+                if (index != -1) {
+                    testObj.splice(index, 1);
+                }
+            }
+            console.log('test complete', new Date() - t1, testObj.length);
+        };
+    </script>
+
+
+</head>
+<body>
+
+</body>
+</html>
