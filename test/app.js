@@ -5,6 +5,7 @@ init();
 function init(){
     util.log('server started');
     wss = new Server({port: 8080, path:'/ws', pingTimeout:10000, pingInterval:5000});
+    wss.init();
     wss.on('connection', webSocketConnected)
 }
 

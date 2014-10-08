@@ -1,11 +1,11 @@
 {
     "name": "v6-ws",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "V6 websockets server",
     "author": {
         "name": "King of Animals Lion"
     },
-    "main": "socket-server/index.js",
+    "main": "index.js",
     "dependencies": {
         "ws": "*"
     },

@@ -39,6 +39,7 @@ function start(){
 function testServerInit(serverOptions, res, rej){ //Promise
    try{
     server = new Server(serverOptions);
+    server.init();
     res(true);
    } catch (error){
        rej(error);
