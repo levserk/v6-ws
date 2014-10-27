@@ -1,10 +1,21 @@
 var util = require("util");
 var Server = require('../index.js').SocketServer, wss;
+var httpServer = require("http").createServer(function response(req, res){
+    res.writeHead(200);
+    res.end("welcome");
+});
 init();
 
 function init(){
+    httpServer.listen(8080);
     util.log('server started');
-    wss = new Server({port: 8080, path:'/ws', pingTimeout:10000, pingInterval:5000});
+    wss = new Server({
+        port: 8080,
+        path:'/ws',
+        server:httpServer,
+        pingTimeout:10000,
+        pingInterval:5000
+    });
     wss.init();
     wss.on('connection', webSocketConnected)
 }
