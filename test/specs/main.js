@@ -1,5 +1,5 @@
 var server,
-    options = {domain:'localhost', port: 8080, path:'/ws', pingTimeout:100000, pingInterval:50000, logLevel:1};
+    options = {domain:'localhost', port: 8081, path:'/ws', pingTimeout:100000, pingInterval:50000, logLevel:1};
 
 exports.start =  function start(util, Promise, Server, WebSocket, Test){
     var mainTest = new Test(testServerInit, options, true, 'run socket server');
@@ -26,8 +26,10 @@ exports.start =  function start(util, Promise, Server, WebSocket, Test){
     function testServerInit(serverOptions, res, rej){ //Promise
         try{
             server = new Server(serverOptions);
-            server.init();
-            res(true);
+            server.init(function(error){
+                if (!error) res(true);
+                else rej(error);
+            });
         } catch (error){
             rej(error);
         }
