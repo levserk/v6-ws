@@ -11,7 +11,7 @@ Client side: default websocket
 var Server = require('v6-ws').SocketServer;
 
 wss = new Server({port: 8080, path:'/ws', pingTimeout:10000, pingInterval:5000});
-wss.init();
+wss.init(function(error){});
 wss.on('connection', handler)
 
 function handler(ws) {}
