@@ -7,16 +7,18 @@ var httpServer = require("http").createServer(function response(req, res){
 init();
 
 function init(){
-    httpServer.listen(8080);
     util.log('server started');
     wss = new Server({
         port: 8080,
         path:'/ws',
-        server:httpServer,
+        //server:httpServer,
         pingTimeout:10000,
-        pingInterval:5000
+        pingInterval:5000,
+        logLevel: 5
     });
-    wss.init();
+    wss.init(function (err) {
+        util.log('run, err:', err);
+    });
     wss.on('connection', webSocketConnected)
 }
 

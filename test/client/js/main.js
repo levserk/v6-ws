@@ -25,11 +25,22 @@ var Socket = function(opts){
     };
     this.ws.onmessage = function (data, flags) {
         console.log('ws message', data, flags);
+        if (data.data == 'ping'){
+            console.log('ws ping', data, flags);
+            self.ws.send('pong');
+            return;
+        }
         self.onMessage(data.data);
     };
+
     this.ws.onping = function (data, flags) {
-        console.log('ws ping', data, flags);
+        console.log('ws native ping', data, flags);
     };
+
+    this.ws.onpong = function (data, flags) {
+        console.log('ws native pong', data, flags);
+    };
+
     this.ws.onopen = function () {
         console.log(new Date(), 'ws open');
     };
@@ -43,11 +54,11 @@ Socket.prototype.onMessage = function(data) {
     try{
         data = JSON.parse(data)
     } catch (e) {
-        util.log('ws wrong data in message', e);
+        console.log('ws wrong data in message', e);
         return;
     }
     if (typeof  data.type != 'number') {
-        util.log('ws wrong message type', data.type);
+        console.log('ws wrong message type', data.type);
         return;
     }
     this.reseiveTime = (new Date()).valueOf();
