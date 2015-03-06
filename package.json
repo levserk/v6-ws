@@ -1,6 +1,6 @@
 {
     "name": "v6-ws",
-    "version": "0.3.2",
+    "version": "0.3.3",
     "description": "V6 websockets server",
     "author": {
         "name": "King of Animals Lion"
