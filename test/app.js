@@ -14,7 +14,9 @@ function init(){
         //server:httpServer,
         pingTimeout:10000,
         pingInterval:5000,
-        logLevel: 5
+        logLevel: 1,
+        stats: true,
+        statsInterval: 10000
     });
     wss.init(function (err) {
         util.log('run, err:', err);
